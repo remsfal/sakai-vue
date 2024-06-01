@@ -1,12 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import AppLayout from '@/layout/AppLayout.vue';
+import FullscreenLayout from '@/layout/FullscreenLayout.vue';
+import ProjectLayout from '@/layout/ProjectLayout.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
+            path: '/fullscreen',
+            component: FullscreenLayout,
+            children: [
+                {
+                    path: '/fullscreen',
+                    name: 'fullscreen',
+                    component: () => import('@/views/Fullscreen.vue')
+                }
+            ]
+        },
+        {
             path: '/',
-            component: AppLayout,
+            component: ProjectLayout,
             children: [
                 {
                     path: '/',

@@ -63,6 +63,7 @@
     }
 
     .layout-menu-button {
+        display: none;
         margin-left: 2rem;
     }
 
@@ -96,6 +97,7 @@
         }
 
         .layout-menu-button {
+            display: flex;
             margin-left: 0;
             order: 1;
         }

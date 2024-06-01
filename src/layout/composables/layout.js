@@ -1,17 +1,18 @@
 import { toRefs, reactive, computed } from 'vue';
 
 const layoutConfig = reactive({
-    ripple: true,
+    ripple: false,
     darkTheme: false,
-    inputStyle: 'outlined',
+    inputStyle: 'filled',
     menuMode: 'static',
     theme: 'aura-light-green',
     scale: 14,
-    activeMenuItem: null
+    activeMenuItem: null,
+    fullscreen: true
 });
 
 const layoutState = reactive({
-    staticMenuDesktopInactive: false,
+    staticMenuDesktopInactive: true,
     overlayMenuActive: false,
     profileSidebarVisible: false,
     configSidebarVisible: false,
@@ -20,6 +21,11 @@ const layoutState = reactive({
 });
 
 export function useLayout() {
+    const setFullscreen = (fullscreen) => {
+        layoutConfig.fullscreen = fullscreen;
+        layoutState.staticMenuDesktopInactive = fullscreen;
+    };
+
     const setScale = (scale) => {
         layoutConfig.scale = scale;
     };
@@ -44,5 +50,5 @@ export function useLayout() {
 
     const isDarkTheme = computed(() => layoutConfig.darkTheme);
 
-    return { layoutConfig: toRefs(layoutConfig), layoutState: toRefs(layoutState), setScale, onMenuToggle, isSidebarActive, isDarkTheme, setActiveMenuItem };
+    return { layoutConfig: toRefs(layoutConfig), layoutState: toRefs(layoutState), setFullscreen, setScale, onMenuToggle, isSidebarActive, isDarkTheme, setActiveMenuItem };
 }

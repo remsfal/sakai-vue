@@ -67,7 +67,7 @@ const isOutsideClicked = (event) => {
             <span>SAKAI</span>
         </router-link>
 
-        <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+        <button v-if="!layoutConfig.fullscreen.value" class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
             <i class="pi pi-bars"></i>
         </button>
 
